@@ -1,99 +1,114 @@
-/* Global Styles */
+/* 🌐 Global Styles */
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f9fafc;
+    background: linear-gradient(to right, #f8f9fa, #e6f7ff);
 }
 
 a {
     text-decoration: none;
-    color: #0078d7;
+    color: #4a90e2;
+    font-weight: bold;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
+.container {
+    width: 85%;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* 🎯 Header Section */
 header {
     background: linear-gradient(135deg, #4a90e2, #0078d7);
     color: white;
-    padding: 2em 0;
     text-align: center;
+    padding: 3em 0;
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 3em;
     margin: 0.2em 0;
 }
 
 header h2 {
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin: 0.2em 0;
     font-weight: normal;
+    opacity: 0.9;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    max-width: 1200px;
-}
-
-/* Section Styling */
-section {
-    margin: 3em 0;
+/* 🧑 About Section */
+#about {
+    text-align: center;
+    margin: 3em auto;
     padding: 2em 0;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-section h2 {
-    text-align: center;
-    margin-bottom: 1em;
-    color: #444;
-}
-
-/* About Section */
 #about p {
-    text-align: center;
     font-size: 1.1em;
+    max-width: 700px;
     margin: 0 auto;
-    max-width: 600px;
 }
 
-/* Projects Section */
+/* 🚀 Projects Section */
+#projects {
+    margin: 3em auto;
+}
+
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    justify-content: center;
+}
+
 .project-card {
-    margin: 1.5em 0;
-    padding: 1em;
-    border: 1px solid #e6e6e6;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5em;
+    text-align: center;
+    transition: transform 0.3s ease;
+    width: 300px;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
 }
 
 .project-card h3 {
-    margin: 0;
-    font-size: 1.2em;
-}
-
-.project-card p {
-    margin: 0.5em 0 0;
-    font-size: 0.95em;
-}
-
-/* Experience Section */
-#experience ul {
-    list-style-type: disc;
-    margin: 0;
-    padding: 0 2em;
-}
-
-#experience li {
     margin: 0.5em 0;
 }
 
-/* Skills Section */
+/* 💼 Experience Section */
+#experience {
+    margin: 3em auto;
+}
+
+#experience ul {
+    list-style-type: square;
+    margin: 1em auto;
+    padding-left: 2em;
+}
+
+#experience li {
+    margin-bottom: 0.5em;
+}
+
+/* 🛠️ Skills Section */
+#skills {
+    margin: 3em auto;
+}
+
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
@@ -109,15 +124,22 @@ section h2 {
     border-radius: 20px;
     font-size: 0.9em;
     font-weight: bold;
+    transition: all 0.3s ease;
 }
 
-/* Footer */
+.skills-grid span:hover {
+    background: #0078d7;
+    color: white;
+}
+
+/* 📧 Footer */
 footer {
     text-align: center;
-    padding: 1em 0;
     margin-top: 2em;
+    padding: 1em 0;
     background: #f1f1f1;
     font-size: 0.9em;
+    border-top: 2px solid #e0e0e0;
 }
 
 footer p {
