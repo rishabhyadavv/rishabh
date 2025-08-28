@@ -1,0 +1,9 @@
+{
+  "title": "Workspace",
+  "subtitle": "Telecom • Swift/Kotlin/Java & React Native",
+  "summary": "White-label app with chat, video calls, and meeting scheduling. Custom RN frameworks for native feature parity on iOS & Android.",
+  "features": ["1:1 & group chat", "Video calls", "Meeting scheduling"],
+  "responsibilities": ["Native/RN bridge design", "Feature delivery", "Release automation"],
+  "tech": ["React Native", "Redux", "TypeScript", "ESLint", "Fastlane", "Custom Component Library"],
+  "links": [{ "label": "Back to Portfolio", "href": "index.html" }]
+}
