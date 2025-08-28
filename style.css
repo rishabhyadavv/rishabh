@@ -200,4 +200,58 @@ footer {
 .footer-content a:hover {
     text-decoration: underline;
 }
+/* Layout helpers */
+.container { max-width: 960px; margin: 0 auto; padding: 24px; }
+.header-content { text-align: center; padding: 32px 0; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 16px; }
+
+/* Cards as links */
+.project-link { text-decoration: none; color: inherit; display: block; }
+.project-card {
+  background: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.project-card:hover, .project-card:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+  border-color: #ddd;
+}
+.project-card h3 { margin-top: 0; }
+
+/* Skills */
+.skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.skills-grid span { background: #f5f6f8; padding: 8px 12px; border-radius: 999px; font-size: 0.9rem; }
+
+/* Detail page */
+.detail-header { background: #0f172a; color: #fff; }
+.detail-bar { display: flex; align-items: center; gap: 16px; }
+.back-link { color: #c7d2fe; text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+.detail-root { margin-top: 16px; }
+
+.detail-card {
+  background: #fff; border: 1px solid #eee; border-radius: 16px; padding: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+}
+.detail-card__header h2 { margin: 0 0 4px 0; }
+.muted { color: #6b7280; margin: 0; }
+.detail-summary { font-size: 1.05rem; line-height: 1.6; }
+
+.list { padding-left: 18px; }
+.list li { margin: 6px 0; }
+
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.badge { background: #eef2ff; border: 1px solid #e0e7ff; padding: 6px 10px; border-radius: 999px; font-size: 0.85rem; }
+
+.cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.btn {
+  display: inline-block; padding: 10px 14px; border-radius: 10px; border: 1px solid #111827;
+  text-decoration: none; color: #111827; font-weight: 600;
+}
+.btn:hover { background: #111827; color: #fff; }
+
+.error { color: #b91c1c; font-weight: 600; }
 
