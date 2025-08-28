@@ -1,7 +1,6 @@
 // js/detail.js
-
 (function () {
-  const $ = (sel) => document.querySelector(sel);
+  const $id = (id) => document.getElementById(id);
 
   function getProjectSlug() {
     const params = new URLSearchParams(window.location.search);
@@ -17,12 +16,12 @@
       .replaceAll("'", "&#039;");
   }
 
-  // Reusable Detail Card component
   function DetailCard({ title, subtitle, summary, responsibilities = [], features = [], tech = [], links = [] }) {
-    const featuresList = features.map(f => `<li>${escapeHtml(f)}</li>`).join("");
-    const respList = responsibilities.map(r => `<li>${escapeHtml(r)}</li>`).join("");
+    const li = (x) => `<li>${escapeHtml(x)}</li>`;
+    const featuresList = features.map(li).join("");
+    const respList = responsibilities.map(li).join("");
     const techBadges = tech.map(t => `<span class="badge">${escapeHtml(t)}</span>`).join("");
-    const linkButtons = links.map(({ label, href }) => 
+    const linkButtons = links.map(({ label, href }) =>
       `<a class="btn" href="${href}" target="_blank" rel="noopener">${escapeHtml(label)}</a>`
     ).join("");
 
@@ -32,55 +31,48 @@
           <h2>${escapeHtml(title)}</h2>
           ${subtitle ? `<p class="muted">${escapeHtml(subtitle)}</p>` : ""}
         </header>
-
         ${summary ? `<p class="detail-summary">${escapeHtml(summary)}</p>` : ""}
-
-        ${features.length ? `
-          <section>
-            <h3>Key Features</h3>
-            <ul class="list">${featuresList}</ul>
-          </section>` : ""}
-
-        ${responsibilities.length ? `
-          <section>
-            <h3>My Responsibilities</h3>
-            <ul class="list">${respList}</ul>
-          </section>` : ""}
-
-        ${tech.length ? `
-          <section>
-            <h3>Tech Stack</h3>
-            <div class="badges">${techBadges}</div>
-          </section>` : ""}
-
-        ${links.length ? `
-          <section class="cta-row">
-            ${linkButtons}
-          </section>` : ""}
+        ${features.length ? `<section><h3>Key Features</h3><ul class="list">${featuresList}</ul></section>` : ""}
+        ${responsibilities.length ? `<section><h3>My Responsibilities</h3><ul class="list">${respList}</ul></section>` : ""}
+        ${tech.length ? `<section><h3>Tech Stack</h3><div class="badges">${techBadges}</div></section>` : ""}
+        ${links.length ? `<section class="cta-row">${linkButtons}</section>` : ""}
       </article>
     `;
   }
 
   async function load() {
     const slug = getProjectSlug();
-    const root = $("#detail-root");
-    const titleEl = $("#project-title");
+    const root = $id("detail-root");
+    const titleEl = $id("project-title");
 
+    if (!root) {
+      console.error("[detail] #detail-root not found");
+      return;
+    }
+    if (!titleEl) {
+      console.error("[detail] #project-title not found in DOM. Check detail.html.");
+      root.innerHTML = `<p class="error">Header target missing. Please ensure <code>id="project-title"</code> exists in detail.html.</p>`;
+      return;
+    }
     if (!slug) {
-      root.innerHTML = `<p class="error">Missing project parameter. Try opening a project from the homepage.</p>`;
+      titleEl.textContent = "Project";
+      root.innerHTML = `<p class="error">Missing project parameter. Open a project from the homepage.</p>`;
       return;
     }
 
     try {
-      const res = await fetch(`projects/${slug}.json`, { cache: "no-store" });
-      if (!res.ok) throw new Error(`Failed to load data for "${slug}"`);
+      // cache-bust to avoid GH Pages/Browser stale html/js/json
+      const res = await fetch(`projects/${slug}.json?v=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Failed to load data for "${slug}" (HTTP ${res.status})`);
       const data = await res.json();
 
       titleEl.textContent = data.title || "Project";
       root.innerHTML = DetailCard(data);
-      document.title = `${data.title} — Project Detail`;
+      document.title = `${data.title || "Project"} — Project Detail`;
     } catch (e) {
-      root.innerHTML = `<p class="error">Could not load project details. (${e.message})</p>`;
+      console.error("[detail] load error:", e);
+      titleEl.textContent = "Project";
+      root.innerHTML = `<p class="error">Could not load project details. ${escapeHtml(e.message)}</p>`;
     }
   }
 
