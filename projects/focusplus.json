@@ -1,0 +1,30 @@
+{
+  "title": "Focus+ (News App)",
+  "subtitle": "BurdaVerlag • iOS & Android • React Native",
+  "summary": "Successfully developed and launched on iOS and Android, delivering real-time news and personalized feeds to a large user base. I implemented subscription and in-app purchase flows to boost engagement and monetization, while optimizing performance and scalability for a seamless user experience.",
+  "features": [
+    "Real-time news feed with personalization",
+    "Subscription & in-app purchase flows (Piano integration-ready)",
+    "Performance tuning and scalability improvements",
+    "Design tokens and shared UI components for brand consistency"
+  ],
+  "responsibilities": [
+    "Led end-to-end app delivery across iOS & Android",
+    "Implemented IAP and subscription lifecycle (purchase, restore, edge cases)",
+    "Set up CI/CD (EAS) with quality gates (ESLint, Lefthook)",
+    "Built and integrated a custom component library across projects"
+  ],
+  "tech": [
+    "React Native",
+    "TypeScript",
+    "Context API",
+    "ESLint",
+    "Lefthook",
+    "EAS (Expo)",
+    "In-App Purchase",
+    "Custom Component Library"
+  ],
+  "links": [
+    { "label": "Back to Portfolio", "href": "index.html" }
+  ]
+}
