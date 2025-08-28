@@ -1,0 +1,9 @@
+{
+  "title": "Mein schöner Garten",
+  "subtitle": "BurdaVerlag • React Native",
+  "summary": "Germany’s most popular gardening brand on mobile—expert tips, seasonal guides, and plant care advice.",
+  "features": ["Seasonal guides", "Plant care advice", "Editorial content"],
+  "responsibilities": ["Feature delivery", "Design tokens & theming", "Performance & stability"],
+  "tech": ["React Native", "Zustand", "TypeScript", "ESLint", "Lefthook", "Bitrise", "Custom Component Library"],
+  "links": [{ "label": "Back to Portfolio", "href": "index.html" }]
+}
