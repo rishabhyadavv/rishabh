@@ -1,0 +1,9 @@
+{
+  "title": "Low Code Mobile Platform",
+  "subtitle": "Mobile Solutions Architect • React Native + Native Modules",
+  "summary": "RAD platform enabling non-technical users to design and generate full-featured mobile apps.",
+  "features": ["Visual configuration → generated app", "Templates & modules", "Scalable architecture"],
+  "responsibilities": ["Architecture", "Native module integration", "Build & release automation"],
+  "tech": ["React Native", "Redux", "TypeScript", "ESLint", "Fastlane", "Custom Component Library", "Native Codegen"],
+  "links": [{ "label": "Back to Portfolio", "href": "index.html" }]
+}
