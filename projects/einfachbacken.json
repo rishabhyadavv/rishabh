@@ -1,0 +1,17 @@
+{
+  "title": "EinfachBacken",
+  "subtitle": "BurdaVerlag • React Native",
+  "summary": "Recipe & baking platform with step-by-step guides, images, and videos. I created reusable UI aligned with the brand design system for consistency and accessibility.",
+  "features": [
+    "Curated recipes with media",
+    "Step-by-step flows",
+    "Brand-aligned design system components"
+  ],
+  "responsibilities": [
+    "Component library integration",
+    "Accessibility & UX polish",
+    "Brand theming and tokens"
+  ],
+  "tech": ["React Native", "Zustand", "TypeScript", "ESLint", "Lefthook", "Bitrise", "Custom Component Library"],
+  "links": [{ "label": "Back to Portfolio", "href": "index.html" }]
+}
