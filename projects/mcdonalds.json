@@ -1,0 +1,9 @@
+{
+  "title": "McDonald's",
+  "subtitle": "Global • iOS",
+  "summary": "Pluggable frameworks for the global app using Sapient’s reference approach: personalized offers + location-based check-ins.",
+  "features": ["Personalized offers", "Restaurant selection", "Location-based check-in"],
+  "responsibilities": ["Framework design", "Feature rollouts across markets"],
+  "tech": ["Objective-C/Swift", "Fastlane"],
+  "links": [{ "label": "Back to Portfolio", "href": "index.html" }]
+}
