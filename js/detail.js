@@ -6,6 +6,7 @@
     const params = new URLSearchParams(window.location.search);
     return (params.get("project") || "").toLowerCase();
   }
+  
 
   function escapeHtml(str = "") {
     return str
