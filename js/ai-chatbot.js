@@ -33,8 +33,17 @@ class AIChatbot {
 
   loadUserPreferences() {
     const saved = localStorage.getItem('chatbot_user_preferences');
-    return saved ? JSON.parse(saved) : {
-      preferredLanguage: 'en',
+    if (saved) {
+      return JSON.parse(saved);
+    }
+    
+    // Detect device language for initial preference
+    const deviceLanguage = navigator.language || navigator.languages?.[0] || 'en';
+    const languageCode = deviceLanguage.toLowerCase().split('-')[0];
+    const preferredLanguage = languageCode === 'de' ? 'de' : 'en';
+    
+    return {
+      preferredLanguage: preferredLanguage,
       responseStyle: 'professional',
       detailLevel: 'medium',
       topics: [],

@@ -808,16 +808,169 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Mobile Typography */
+    header h1 {
+        font-size: 2.2em;
+    }
+    
+    header h2 {
+        font-size: 1.2em;
+    }
+    
+    .hero-subtitle {
+        font-size: 1em;
+    }
+    
+    /* Mobile Container */
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    /* Mobile Controls */
+    .controls-container {
+        top: 15px;
+        right: 15px;
+        gap: 8px;
+    }
+    
+    .theme-toggle,
+    .language-toggle {
+        width: 45px;
+        height: 45px;
+    }
+    
+    /* Mobile Hero Stats */
+    .hero-stats {
+        gap: 1.5em;
+        margin-top: 1.5em;
+    }
+    
+    .stat-number {
+        font-size: 1.8em;
+    }
+    
+    /* Mobile Project Cards */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .project-card {
+        width: 100%;
+        margin: 0;
+        padding: 1.5em;
+    }
+    
+    /* Mobile Experience Timeline */
+    .experience-item {
+        padding: 1.2em;
+        margin-bottom: 1.5em;
+    }
+    
+    /* Mobile CTA Buttons */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8em;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+    
+    /* Mobile Skills Grid */
+    .skills-grid {
+        gap: 6px;
+    }
+    
+    .skills-grid span {
+        font-size: 0.85em;
+        padding: 0.4em 0.8em;
+    }
+    
+    /* Mobile Chatbot */
     .chatbot-container {
-        width: calc(100vw - 40px);
+        width: calc(100vw - 30px);
         height: 400px;
-        right: 20px;
-        left: 20px;
+        right: 15px;
+        left: 15px;
     }
     
     .chatbot-toggle {
-        right: 20px;
-        bottom: 20px;
+        right: 15px;
+        bottom: 15px;
+        width: 55px;
+        height: 55px;
+    }
+    
+    /* Mobile Footer */
+    .footer-container {
+        padding: 0 15px;
+    }
+    
+    .social-icons {
+        gap: 1.2em;
+    }
+    
+    .social-icons a {
+        font-size: 1.3em;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    
+    header h2 {
+        font-size: 1.1em;
+    }
+    
+    .container {
+        width: 98%;
+        padding: 10px;
+    }
+    
+    .controls-container {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .theme-toggle,
+    .language-toggle {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 1em;
+    }
+    
+    .project-card {
+        padding: 1.2em;
+    }
+    
+    .experience-item {
+        padding: 1em;
+    }
+    
+    .chatbot-container {
+        width: calc(100vw - 20px);
+        height: 350px;
+        right: 10px;
+        left: 10px;
+    }
+    
+    .chatbot-toggle {
+        right: 10px;
+        bottom: 10px;
+        width: 50px;
+        height: 50px;
     }
 }
 

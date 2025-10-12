@@ -366,7 +366,16 @@
         if (savedLanguage) {
           return savedLanguage;
         }
-        return 'en'; // Default to English
+        
+        // Detect device language
+        const deviceLanguage = navigator.language || navigator.languages?.[0] || 'en';
+        console.log('Device language detected:', deviceLanguage);
+        
+        // Map common language codes to supported languages
+        const languageCode = deviceLanguage.toLowerCase().split('-')[0]; // Get primary language code
+        
+        // Return 'de' for German, 'en' for everything else (English as fallback)
+        return languageCode === 'de' ? 'de' : 'en';
       }
 
       const currentLanguage = getInitialLanguage();
