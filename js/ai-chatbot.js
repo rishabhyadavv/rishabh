@@ -248,12 +248,6 @@ class AIChatbot {
     this.chatbotSend = document.getElementById('chatbot-send');
     this.chatbotMessages = document.getElementById('chatbot-messages');
     this.typingIndicator = document.getElementById('typing-indicator');
-    this.apiKeySection = document.getElementById('api-key-section');
-    this.apiKeyInput = document.getElementById('api-key-input');
-    this.saveApiKeyBtn = document.getElementById('save-api-key');
-    this.testApiBtn = document.getElementById('test-api');
-    this.showLearningStatsBtn = document.getElementById('show-learning-stats');
-    this.clearLearningDataBtn = document.getElementById('clear-learning-data');
   }
 
   setupEventListeners() {
@@ -278,36 +272,6 @@ class AIChatbot {
           this.sendAIMessage();
         }
       });
-
-      // API Key functionality
-      if (this.saveApiKeyBtn) {
-        this.saveApiKeyBtn.addEventListener('click', () => {
-          const apiKey = this.apiKeyInput.value.trim();
-          if (apiKey) {
-            this.setOpenAIKey(apiKey);
-            this.apiKeySection.style.display = 'none';
-            this.apiKeyInput.value = '';
-          }
-        });
-      }
-
-      if (this.testApiBtn) {
-        this.testApiBtn.addEventListener('click', () => {
-          this.testAPIConnection();
-        });
-      }
-
-      if (this.showLearningStatsBtn) {
-        this.showLearningStatsBtn.addEventListener('click', () => {
-          this.showLearningStats();
-        });
-      }
-
-      if (this.clearLearningDataBtn) {
-        this.clearLearningDataBtn.addEventListener('click', () => {
-          this.clearLearningData();
-        });
-      }
 
       // Listen for language changes to update chatbot placeholder
       this.observeLanguageChanges();
@@ -358,54 +322,6 @@ class AIChatbot {
     }
   }
 
-  showAPIKeyPrompt() {
-    const chatbotHeader = document.querySelector('.chatbot-header h3');
-    if (chatbotHeader) {
-      chatbotHeader.innerHTML = chatbotHeader.innerHTML.replace('AI Assistant', 'AI Assistant <span style="font-size: 12px; opacity: 0.7;">(Fallback Mode)</span>');
-    }
-    
-    if (this.apiKeySection) {
-      this.apiKeySection.style.display = 'block';
-    }
-  }
-
-  setOpenAIKey(apiKey) {
-    this.openAIKey = apiKey;
-    localStorage.setItem('openai_api_key', apiKey);
-    
-    const chatbotHeader = document.querySelector('.chatbot-header h3');
-    if (chatbotHeader) {
-      chatbotHeader.innerHTML = chatbotHeader.innerHTML.replace('(Fallback Mode)', '');
-    }
-    
-    if (this.apiKeySection) {
-      this.apiKeySection.style.display = 'none';
-    }
-  }
-
-  async testAPIConnection() {
-    console.log('🧪 Testing API Connection...');
-    
-    if (!this.openAIKey) {
-      console.log('❌ No API key available for testing');
-      this.addMessage('❌ No API key available. Please enter your OpenAI API key first.', 'bot');
-      return;
-    }
-
-    this.addMessage('🧪 Testing API connection...', 'bot');
-    this.showTypingIndicator();
-
-    try {
-      const testResponse = await this.getOpenAIResponse('Hello, this is a test message.', 'en');
-      console.log('✅ API Test Success:', testResponse);
-      this.hideTypingIndicator();
-      this.addMessage(`✅ API Test Successful! Response: "${testResponse.substring(0, 100)}..."`, 'bot');
-    } catch (error) {
-      console.log('❌ API Test Failed:', error.message);
-      this.hideTypingIndicator();
-      this.addMessage(`❌ API Test Failed: ${error.message}`, 'bot');
-    }
-  }
 
   async sendAIMessage() {
     const message = this.chatbotInput.value.trim();
@@ -686,61 +602,9 @@ Antworten Sie natürlich und hilfreich auf Fragen über Rishabhs Arbeit, Erfahru
     }
   }
 
-  showLearningStats() {
-    console.log('📊 Learning Statistics:', {
-      totalInteractions: this.learningMemory.totalInteractions,
-      successfulResponses: this.learningMemory.successfulResponses.length,
-      failedResponses: this.learningMemory.failedResponses.length,
-      learningPatterns: this.learningMemory.learningPatterns,
-      averageRating: this.responseQuality.averageRating,
-      totalRatings: this.responseQuality.totalRatings,
-      userCorrections: Object.keys(this.knowledgeBase.userCorrections).length
-    });
-
-    const statsMessage = `📊 Learning Statistics:
-• Total Interactions: ${this.learningMemory.totalInteractions}
-• Successful Responses: ${this.learningMemory.successfulResponses.length}
-• Failed Responses: ${this.learningMemory.failedResponses.length}
-• User Corrections: ${Object.keys(this.knowledgeBase.userCorrections).length}
-• Average Rating: ${this.responseQuality.averageRating.toFixed(1)}/5
-• Learning Patterns: ${JSON.stringify(this.learningMemory.learningPatterns, null, 2)}`;
-
-    this.addMessage(statsMessage, 'bot');
-  }
-
-  clearLearningData() {
-    if (confirm('Are you sure you want to clear all learning data? This cannot be undone.')) {
-      localStorage.removeItem('chatbot_learning_memory');
-      localStorage.removeItem('chatbot_user_preferences');
-      localStorage.removeItem('chatbot_knowledge_base');
-      localStorage.removeItem('chatbot_response_quality');
-      
-      // Reset to initial state
-      this.learningMemory = this.loadLearningMemory();
-      this.userPreferences = this.loadUserPreferences();
-      this.knowledgeBase = this.loadKnowledgeBase();
-      this.responseQuality = this.loadResponseQuality();
-      
-      console.log('🗑️ All learning data cleared');
-      this.addMessage('🗑️ All learning data has been cleared. The chatbot will start learning from scratch.', 'bot');
-    }
-  }
 }
 
 // Initialize AI Chatbot when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   window.aiChatbot = new AIChatbot();
-  
-  // Add global functions for learning features
-  window.setOpenAIKey = function(apiKey) {
-    window.aiChatbot.setOpenAIKey(apiKey);
-  };
-  
-  window.addUserCorrection = function(originalQuestion, correction, correctInformation) {
-    window.aiChatbot.addUserCorrection(originalQuestion, correction, correctInformation);
-  };
-  
-  window.rateResponse = function(responseId, rating, feedback) {
-    window.aiChatbot.rateResponse(responseId, rating, feedback);
-  };
 });

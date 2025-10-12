@@ -712,26 +712,6 @@ footer {
     font-size: 11px;
 }
 
-/* API Key Section */
-.api-key-section {
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid #e2e8f0;
-}
-
-.api-key-section input {
-    background: white;
-    color: #2d3748;
-}
-
-.api-key-section input:focus {
-    border-color: #4a90e2;
-    outline: none;
-}
-
-.api-key-section button:hover {
-    background: #357abd;
-}
 
 /* Dark Mode Chatbot */
 [data-theme="dark"] .chatbot-container {
@@ -782,28 +762,6 @@ footer {
 
 [data-theme="dark"] .chatbot-footer small {
     color: #a0aec0;
-}
-
-[data-theme="dark"] .api-key-section {
-    border-color: #4a5568;
-}
-
-[data-theme="dark"] .api-key-section input {
-    background: #4a5568;
-    border-color: #718096;
-    color: #e2e8f0;
-}
-
-[data-theme="dark"] .api-key-section input:focus {
-    border-color: #63b3ed;
-}
-
-[data-theme="dark"] .api-key-section button {
-    background: #63b3ed;
-}
-
-[data-theme="dark"] .api-key-section button:hover {
-    background: #4299e1;
 }
 
 /* Responsive Design */
