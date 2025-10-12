@@ -1,18 +1,33 @@
 {
   "title": "Focus+ (News App)",
+  "title_de": "Focus+ (Nachrichten-App)",
   "subtitle": "BurdaVerlag • iOS & Android • React Native",
+  "subtitle_de": "BurdaVerlag • iOS & Android • React Native",
   "summary": "Successfully developed and launched on iOS and Android, delivering real-time news and personalized feeds to a large user base. I implemented subscription and in-app purchase flows to boost engagement and monetization, while optimizing performance and scalability for a seamless user experience.",
+  "summary_de": "Erfolgreich entwickelt und auf iOS und Android veröffentlicht, liefert Echtzeit-Nachrichten und personalisierte Feeds an eine große Benutzerbasis. Ich implementierte Abonnement- und In-App-Kauf-Flows zur Steigerung des Engagements und der Monetarisierung, während ich die Leistung und Skalierbarkeit für eine nahtlose Benutzererfahrung optimierte.",
   "features": [
     "Real-time news feed with personalization",
     "Subscription & in-app purchase flows (Piano integration-ready)",
     "Performance tuning and scalability improvements",
     "Design tokens and shared UI components for brand consistency"
   ],
+  "features_de": [
+    "Echtzeit-Nachrichtenfeed mit Personalisierung",
+    "Abonnement- und In-App-Kauf-Flows (Piano-Integration bereit)",
+    "Leistungsoptimierung und Skalierbarkeitsverbesserungen",
+    "Design-Tokens und gemeinsame UI-Komponenten für Markenkonsistenz"
+  ],
   "responsibilities": [
     "Led end-to-end app delivery across iOS & Android",
     "Implemented IAP and subscription lifecycle (purchase, restore, edge cases)",
     "Set up CI/CD (EAS) with quality gates (ESLint, Lefthook)",
     "Built and integrated a custom component library across projects"
+  ],
+  "responsibilities_de": [
+    "Leitete die End-to-End-App-Bereitstellung für iOS & Android",
+    "Implementierte IAP und Abonnement-Lebenszyklus (Kauf, Wiederherstellung, Edge Cases)",
+    "Richtete CI/CD (EAS) mit Qualitätstoren ein (ESLint, Lefthook)",
+    "Baute und integrierte eine benutzerdefinierte Komponentenbibliothek über Projekte hinweg"
   ],
   "tech": [
     "React Native",
@@ -26,5 +41,8 @@
   ],
   "links": [
     { "label": "Back to Portfolio", "href": "index.html" }
+  ],
+  "links_de": [
+    { "label": "Zurück zum Portfolio", "href": "index.html" }
   ]
 }

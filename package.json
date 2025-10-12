@@ -1,0 +1,42 @@
+{
+  "name": "rishabh-portfolio",
+  "version": "1.0.0",
+  "description": "Rishabh Yadav's Portfolio with AI Learning Chatbot",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 3000",
+    "dev": "python3 -m http.server 3000",
+    "serve": "python3 -m http.server 3000",
+    "run": "python3 -m http.server 3000",
+    "start:8000": "python3 -m http.server 8000",
+    "start:python2": "python -m SimpleHTTPServer 3000",
+    "start:node": "npx http-server -p 3000",
+    "start:php": "php -S localhost:3000",
+    "kill": "lsof -ti:3000 | xargs kill -9 2>/dev/null || echo 'No process on port 3000'",
+    "kill:8000": "lsof -ti:8000 | xargs kill -9 2>/dev/null || echo 'No process on port 8000'",
+    "kill:8001": "lsof -ti:8001 | xargs kill -9 2>/dev/null || echo 'No process on port 8001'",
+    "kill:all": "lsof -ti:3000,8000,8001 | xargs kill -9 2>/dev/null || echo 'No processes found on ports 3000, 8000, 8001'",
+    "open": "open http://localhost:3000",
+    "test": "echo 'Portfolio is running at http://localhost:3000'"
+  },
+  "keywords": [
+    "portfolio",
+    "mobile-developer",
+    "react-native",
+    "ai-chatbot",
+    "learning-system"
+  ],
+  "author": "Rishabh Yadav",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/portfolio.git"
+  },
+  "homepage": "http://localhost:3000",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,17 +1,31 @@
 {
   "title": "EinfachBacken",
+  "title_de": "EinfachBacken",
   "subtitle": "BurdaVerlag • React Native",
+  "subtitle_de": "BurdaVerlag • React Native",
   "summary": "Recipe & baking platform with step-by-step guides, images, and videos. I created reusable UI aligned with the brand design system for consistency and accessibility.",
+  "summary_de": "Rezept- und Backplattform mit Schritt-für-Schritt-Anleitungen, Bildern und Videos. Ich erstellte wiederverwendbare UI-Komponenten, die mit dem Marken-Design-System übereinstimmen für Konsistenz und Barrierefreiheit.",
   "features": [
     "Curated recipes with media",
     "Step-by-step flows",
     "Brand-aligned design system components"
+  ],
+  "features_de": [
+    "Kuratierte Rezepte mit Medien",
+    "Schritt-für-Schritt-Flows",
+    "Markenkonforme Design-System-Komponenten"
   ],
   "responsibilities": [
     "Component library integration",
     "Accessibility & UX polish",
     "Brand theming and tokens"
   ],
+  "responsibilities_de": [
+    "Komponentenbibliothek-Integration",
+    "Barrierefreiheit & UX-Verfeinerung",
+    "Marken-Theming und Tokens"
+  ],
   "tech": ["React Native", "Zustand", "TypeScript", "ESLint", "Lefthook", "Bitrise", "Custom Component Library"],
-  "links": [{ "label": "Back to Portfolio", "href": "index.html" }]
+  "links": [{ "label": "Back to Portfolio", "href": "index.html" }],
+  "links_de": [{ "label": "Zurück zum Portfolio", "href": "index.html" }]
 }

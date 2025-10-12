@@ -17,26 +17,59 @@
       .replaceAll("'", "&#039;");
   }
 
-  function DetailCard({ title, subtitle, summary, responsibilities = [], features = [], tech = [], links = [] }) {
+  function getCurrentLanguage() {
+    return document.body.getAttribute('data-language') || 'en';
+  }
+
+  function getTranslatedText(obj, key, fallback = '') {
+    const currentLang = getCurrentLanguage();
+    if (currentLang === 'de' && obj[`${key}_de`]) {
+      return obj[`${key}_de`];
+    }
+    return obj[key] || fallback;
+  }
+
+  function DetailCard({ title, subtitle, summary, responsibilities = [], features = [], tech = [], links = [], features_de = [], responsibilities_de = [], links_de = [], title_de, subtitle_de, summary_de }) {
+    const currentLang = getCurrentLanguage();
     const li = (x) => `<li>${escapeHtml(x)}</li>`;
-    const featuresList = features.map(li).join("");
-    const respList = responsibilities.map(li).join("");
+    
+    // Get translated arrays
+    const translatedFeatures = currentLang === 'de' && features_de ? features_de : features;
+    const translatedResponsibilities = currentLang === 'de' && responsibilities_de ? responsibilities_de : responsibilities;
+    const translatedLinks = currentLang === 'de' && links_de ? links_de : links;
+    
+    const featuresList = translatedFeatures.map(li).join("");
+    const respList = translatedResponsibilities.map(li).join("");
     const techBadges = tech.map(t => `<span class="badge">${escapeHtml(t)}</span>`).join("");
-    const linkButtons = links.map(({ label, href }) =>
+    const linkButtons = translatedLinks.map(({ label, href }) =>
       `<a class="btn" href="${href}" target="_blank" rel="noopener">${escapeHtml(label)}</a>`
     ).join("");
+
+    // Section headers based on language
+    const sectionHeaders = {
+      en: {
+        features: "Key Features",
+        responsibilities: "My Responsibilities", 
+        tech: "Tech Stack"
+      },
+      de: {
+        features: "Wichtige Funktionen",
+        responsibilities: "Meine Verantwortlichkeiten",
+        tech: "Tech Stack"
+      }
+    };
 
     return `
       <article class="detail-card">
         <header class="detail-card__header">
-          <h2>${escapeHtml(title)}</h2>
-          ${subtitle ? `<p class="muted">${escapeHtml(subtitle)}</p>` : ""}
+          <h2>${escapeHtml(getTranslatedText({title, title_de}, 'title', title))}</h2>
+          ${subtitle ? `<p class="muted">${escapeHtml(getTranslatedText({subtitle, subtitle_de}, 'subtitle', subtitle))}</p>` : ""}
         </header>
-        ${summary ? `<p class="detail-summary">${escapeHtml(summary)}</p>` : ""}
-        ${features.length ? `<section><h3>Key Features</h3><ul class="list">${featuresList}</ul></section>` : ""}
-        ${responsibilities.length ? `<section><h3>My Responsibilities</h3><ul class="list">${respList}</ul></section>` : ""}
-        ${tech.length ? `<section><h3>Tech Stack</h3><div class="badges">${techBadges}</div></section>` : ""}
-        ${links.length ? `<section class="cta-row">${linkButtons}</section>` : ""}
+        ${summary ? `<p class="detail-summary">${escapeHtml(getTranslatedText({summary, summary_de}, 'summary', summary))}</p>` : ""}
+        ${translatedFeatures.length ? `<section><h3>${sectionHeaders[currentLang].features}</h3><ul class="list">${featuresList}</ul></section>` : ""}
+        ${translatedResponsibilities.length ? `<section><h3>${sectionHeaders[currentLang].responsibilities}</h3><ul class="list">${respList}</ul></section>` : ""}
+        ${tech.length ? `<section><h3>${sectionHeaders[currentLang].tech}</h3><div class="badges">${techBadges}</div></section>` : ""}
+        ${translatedLinks.length ? `<section class="cta-row">${linkButtons}</section>` : ""}
       </article>
     `;
   }
@@ -67,9 +100,23 @@
       if (!res.ok) throw new Error(`Failed to load data for "${slug}" (HTTP ${res.status})`);
       const data = await res.json();
 
-      titleEl.textContent = data.title || "Project";
-      root.innerHTML = DetailCard(data);
-      document.title = `${data.title || "Project"} — Project Detail`;
+      titleEl.textContent = getTranslatedText(data, 'title', 'Project');
+      root.innerHTML = DetailCard({
+        title: data.title,
+        title_de: data.title_de,
+        subtitle: data.subtitle,
+        subtitle_de: data.subtitle_de,
+        summary: data.summary,
+        summary_de: data.summary_de,
+        features: data.features || [],
+        features_de: data.features_de || [],
+        responsibilities: data.responsibilities || [],
+        responsibilities_de: data.responsibilities_de || [],
+        tech: data.tech || [],
+        links: data.links || [],
+        links_de: data.links_de || []
+      });
+      document.title = `${getTranslatedText(data, 'title', 'Project')} — Project Detail`;
     } catch (e) {
       console.error("[detail] load error:", e);
       titleEl.textContent = "Project";
